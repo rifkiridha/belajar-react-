@@ -1,4 +1,4 @@
-import AuthLayout from "../components/organism/templates/AuthLayout";
+import AuthLayout from "../components/templates/AuthLayout";
 import Register from "../components/organism/Register";
 import { Link } from "react-router-dom";
 
@@ -6,7 +6,7 @@ export default function AppRegister() {
   return (
     <>
       <div className="flex flex-col justify-center items-center min-h-screen">
-        <AuthLayout title="Daftar" desc="Silahkan Daftar">
+        <AuthLayout title="Daftar" desc="Silahkan Daftar" type="register">
           <Register />
           <p className="text-sm mt-4 text-center">
             Already have an account?
@@ -20,3 +20,5 @@ export default function AppRegister() {
     </>
   )
 }
+
+
