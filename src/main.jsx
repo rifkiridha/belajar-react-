@@ -8,6 +8,7 @@ import App from './App.jsx'
 import './index.css'
 import AppRegister from './pages/register.jsx';
 import AppLogin from './pages/login.jsx';
+import ProductPage from './pages/products.jsx';
 
 const router = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <AppLogin/>,
+  },
+  {
+    path: "/products",
+    element: <ProductPage/>,
   },
 ])
 

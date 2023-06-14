@@ -1,10 +1,13 @@
 import AuthLayout from "../components/templates/AuthLayout";
 import { Link } from "react-router-dom";
 import Login from "../components/organism/Login";
+import Header from "../components/organism/Header";
+import Footer from "../components/organism/Footer";
 
 export default function AppLogin() {
   return (
     <>
+    <Header/>
 <section className="p-6 dark:bg-gray-800 dark:text-gray-50">
 	<form novalidate="" action="" className="container space-y-12">
 		<fieldset className="grid grid-cols-2 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-900">
@@ -15,7 +18,7 @@ export default function AppLogin() {
 		</fieldset>
 	</form>
 </section>
-
+    <Footer/>
     </>
   )
 }
