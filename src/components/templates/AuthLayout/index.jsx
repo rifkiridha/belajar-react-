@@ -40,7 +40,7 @@ export default function AuthLayout(props) {
               </Link>
             </p>
             )}
-            <Navigasi/>
+            <Navigasi type={type} />
           </div>
         </div>
       </div>
@@ -50,7 +50,7 @@ export default function AuthLayout(props) {
 
 // Cara ke-3
 
-const Navigasi = ({ type }) => {
+const Navigasi = ({type}) => {
   if (type === "login") {
     return (
       <p className="text-sm mt-5 text-center">

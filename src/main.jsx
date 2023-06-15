@@ -8,6 +8,7 @@ import {
 import AppLogin from './pages/login';
 import AppRegister from './pages/register';
 import ErrorPage from './pages/error';
+import ProductPage from './pages/product';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <AppRegister/>,
+  },
+  {
+    path: "/product",
+    element: <ProductPage/>,
   },
 ]);
 
