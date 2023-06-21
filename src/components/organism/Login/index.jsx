@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import InputForm from '../../molecules/InputForm';
 import Button from '../../atoms/Button';
 import Label from '../../atoms/Label';
 import Input from '../../atoms/Input';
+import { useEffect,useState } from 'react';
 
 export default function Login() {
     const handleLogin = (event) => {
@@ -25,11 +26,23 @@ export default function Login() {
     };
 
 
+    // useRef = hooks yang biasa dipake untuk akses  dom
+
+
+    const emailRef = useRef(null);
+    // useEffect(()=>{
+    //     ()=>{emailRef.current.focus()};
+    // },[]);
+
+    useEffect(()=>{
+        emailRef.current.focus();
+    },[]);
+
     return (
     
         <form action="" onSubmit={handleLogin}>
             <fieldset>
-            <InputForm label="Email" name="email" type="email" placeholder="Masukkan email" defaultValue={localStorage.getItem("email")} />
+            <InputForm label="Email" name="email" type="email" placeholder="Masukkan email" defaultValue={localStorage.getItem("email")} ref={emailRef} />
             <InputForm label="Password" name="password" type="password" placeholder="Masukkan password" defaultValue={localStorage.getItem("password")} />
             <Label htmlFor="saveinfo" ><Input id="saveinfo" name="saveinfo" label="Ingat Saya" type="checkbox" />Ingat Saya</Label>
             <br />
