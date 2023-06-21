@@ -1,13 +1,41 @@
 import React from 'react'
 import InputForm from '../../molecules/InputForm';
 import Button from '../../atoms/Button';
+import Label from '../../atoms/Label';
+import Input from '../../atoms/Input';
 
 export default function Login() {
-  return (
-    <form action="">
-        <InputForm label="Email" name="email" type="email" placeholder="Masukkan email"/>
-        <InputForm label="Password" name="password" type="password" placeholder="Masukkan password"/>
-        <Button color="bg-blue-500">Login</Button>
-    </form>
-  )
+    const handleLogin = (event) => {
+        event.preventDefault();
+        console.log("terklik login");
+        console.log(event.target.saveinfo.value);
+        if (event.target.saveinfo.checked) {
+            console.log(event.target.email.value);
+            console.log(event.target.password.value);
+            localStorage.setItem("email", event.target.email.value);
+            localStorage.setItem("password", event.target.password.value);
+            localStorage.setItem("saveinfo", event.target.saveinfo.value);
+        } else {
+            localStorage.setItem("email", "");
+            localStorage.setItem("password", "");
+            localStorage.setItem("saveinfo", "false");
+        }
+        alert("Succesfully login!");
+        window.location.href = "/product"
+    };
+
+
+    return (
+    
+        <form action="" onSubmit={handleLogin}>
+            <fieldset>
+            <InputForm label="Email" name="email" type="email" placeholder="Masukkan email" defaultValue={localStorage.getItem("email")} />
+            <InputForm label="Password" name="password" type="password" placeholder="Masukkan password" defaultValue={localStorage.getItem("password")} />
+            <Label htmlFor="saveinfo" ><Input id="saveinfo" name="saveinfo" label="Ingat Saya" type="checkbox" />Ingat Saya</Label>
+            <br />
+            </fieldset>
+
+            <Button color="bg-blue-500">Login</Button>              
+        </form>
+    )
 }

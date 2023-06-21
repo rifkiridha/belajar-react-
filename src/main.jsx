@@ -5,15 +5,20 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import Navbar from './components/organism/Navbar';
 import AppLogin from './pages/login';
 import AppRegister from './pages/register';
 import ErrorPage from './pages/error';
 import ProductPage from './pages/product';
+import Header from './components/molecules/Header';
+import Footer from './components/molecules/Footer';
+import App from './App';
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div>Hello world!</div>,
+    element: <App/>,
     errorElement:<ErrorPage/>,
   },
   {
@@ -34,6 +39,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <Navbar type="header"/>
     <RouterProvider router={router} />
+    <Navbar type="footer"/>
   </React.StrictMode>,
 )

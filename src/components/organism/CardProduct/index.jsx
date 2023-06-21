@@ -36,15 +36,17 @@ const Body = (props) =>{
 }
 
 const Footer = (props) => {
-    const {children} = props;
+    const {children,price,handleToCart,id} = props;
     return (
         <>
         <div className='px-5 py-4 text-center'>
             <a href="#">
-                <p className="text-slate-900 text-base">{children}</p>
+                <p className="text-slate-900 text-base">
+                    Harga : {price.toLocaleString("id-ID",{style:"currency", currency:"IDR"})}
+                </p>
             </a>
             <form action="/beli">
-        <Button color="bg-blue-500">Beli</Button>
+        <Button type="button" size="w-full" color="bg-blue-500" onClick={()=>handleToCart(id)}>Beli</Button>
     </form>
         </div>
         </>
