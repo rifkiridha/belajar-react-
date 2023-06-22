@@ -3,6 +3,7 @@ import CardProduct from '../components/organism/CardProduct'
 import { getProduct } from '../services/product.service';
 import Button from '../components/atoms/Button';
 import { getUsername} from '../services/authservices';
+import { useLogin } from '../hooks/useLogin';
 
 
 // const data = [{
@@ -36,18 +37,20 @@ export default function ProductPage() {
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [data, setData] = useState([]);
-  const [username, setUsername] = useState([]);
+  const username = useLogin();
 
-  useEffect(()=>{
-    const token = localStorage.getItem("token");
-    // cek token, klo gaaada diarahin ke login
+  
+  // dipindahkan ke useLogin
+  // useEffect(()=>{
+  //   const token = localStorage.getItem("token");
+  //   // cek token, klo gaaada diarahin ke login
 
-  if (token) {
-    setUsername(getUsername(token));
-  } else{
-    window.location.href="/login"
-  }
-  })
+  // if (token) {
+  //   setUsername(getUsername(token));
+  // } else{
+  //   window.location.href="/login"
+  // }
+  // },[])
 
 
   const handleCart = (event) => {

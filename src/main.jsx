@@ -13,6 +13,7 @@ import ProductPage from './pages/product';
 import Header from './components/molecules/Header';
 import Footer from './components/molecules/Footer';
 import App from './App';
+import { ProfilePage } from './pages/profile';
 
 
 const router = createBrowserRouter([
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: "/product",
     element: <ProductPage/>,
+  },
+  {
+    path: "/profile",
+    element: <ProfilePage/>,
   },
 ]);
 
