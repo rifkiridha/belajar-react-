@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import CardProduct from '../components/organism/CardProduct'
 import { getProduct } from '../services/product.service';
 import Button from '../components/atoms/Button';
+import { getUsername} from '../services/authservices';
+
 
 // const data = [{
 //   id: 1,
@@ -34,6 +36,19 @@ export default function ProductPage() {
   const [cart, setCart] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [data, setData] = useState([]);
+  const [username, setUsername] = useState([]);
+
+  useEffect(()=>{
+    const token = localStorage.getItem("token");
+    // cek token, klo gaaada diarahin ke login
+
+  if (token) {
+    setUsername(getUsername(token));
+  } else{
+    window.location.href="/login"
+  }
+  })
+
 
   const handleCart = (event) => {
     event.preventDefault();
@@ -73,8 +88,13 @@ export default function ProductPage() {
 
 
   const handleLogout = () => {
-    localStorage.removeItem("email");
-    localStorage.removeItem("password");
+    // localStorage.removeItem("email");
+    // localStorage.removeItem("password");
+    
+    // localStorage.removeItem("token");
+    localStorage.clear();
+    setCart([]);
+    
     window.location.href = "/login";
   };
 
@@ -110,7 +130,8 @@ export default function ProductPage() {
   return (
     <>
       <div className="flex justify-between items-center bg-gray-800 text-white font-semibold px-4 py-4">
-        <h4 className="text-xl">Hi, {email.split("@gmail.com")}</h4>
+        <h4 className="text-xl">Hi, {username}</h4>
+          <Button color="bg-red-500" onClick={handleLogout}>Logout</Button>
       </div>
       <div className="flex bg-gray-800 text-white font-semibold px-4 py-4">
         <div className='w-4/6 flex flex-wrap justify-center items-center min-h-screen gap-6'>
