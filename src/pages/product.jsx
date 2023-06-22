@@ -140,7 +140,7 @@ export default function ProductPage() {
         <div className='w-4/6 flex flex-wrap justify-center items-center min-h-screen gap-6'>
           {data.length > 0 && data.map((data) => (
             <CardProduct key={data.id}>
-              <CardProduct.Header image={data.image} />
+              <CardProduct.Header image={data.image} id={data.id} />
               <CardProduct.Body title={data.title}>{data.description}</CardProduct.Body>
               <CardProduct.Footer price={data.price} id={data.id} handleToCart={handleToCart} />
             </CardProduct>

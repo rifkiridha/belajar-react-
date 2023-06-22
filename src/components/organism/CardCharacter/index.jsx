@@ -2,7 +2,7 @@ import React from 'react';
 import Button from '../../atoms/Button';
 import { Link } from 'react-router-dom';
 
-export default function CardProduct(props) {
+export default function CardChara(props) {
     const {children}=props;
   return (
     <>
@@ -16,7 +16,7 @@ export default function CardProduct(props) {
 const Header = (props) => {
     const {image,id} = props;
     return (
-        <Link to={`/product/${id}`}>
+        <Link to={`/rickandmorty/${id}`}>
             <img src={image} alt="gambar" className="p-4 rounded-t-lg" />
         </Link>
     )
@@ -54,6 +54,6 @@ const Footer = (props) => {
     )
 }
 
-CardProduct.Header=Header
-CardProduct.Body=Body
-CardProduct.Footer=Footer
+CardChara.Header=Header
+CardChara.Body=Body
+CardChara.Footer=Footer
