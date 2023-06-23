@@ -4,6 +4,8 @@ import { getProduct } from '../services/product.service';
 import Button from '../components/atoms/Button';
 import { getUsername} from '../services/authservices';
 import { useLogin } from '../hooks/useLogin';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearCart } from '../redux/slices/cartSlice';
 
 
 // const data = [{
@@ -34,7 +36,10 @@ const email = localStorage.getItem("email");
 
 export default function ProductPage() {
   // state = data/penyimpanan private yang dipake buat menghandle komponen2 yg berubah2
-  const [cart, setCart] = useState([]);
+  // cara menggunakan state
+  // const [cart, setCart] = useState([]);
+  
+  const cart = useSelector((state)=>state.cart.data);
   const [totalPrice, setTotalPrice] = useState(0);
   const [data, setData] = useState([]);
   const username = useLogin();
@@ -52,11 +57,13 @@ export default function ProductPage() {
   // }
   // },[])
 
+const dispatch = useDispatch()
 
   const handleCart = (event) => {
     event.preventDefault();
     console.log("hapus cart");
-    setCart([]);
+    // setCart([]);
+    dispatch(clearCart())
     setTotalPrice([]);
     alert("Berhasil dihapus");
   };
@@ -64,9 +71,12 @@ export default function ProductPage() {
   
   
   // componentDidMount useEffect -> hook untuk manipulasi komponen
-  useEffect(() => {
-    setCart(JSON.parse(localStorage.getItem("cart")) || []);
-  }, []) //dependencies array (array kosong) = untuk menghentikan looping (warning)
+
+  // useEffect(() => {
+  //   setCart(JSON.parse(localStorage.getItem("cart")) || []);
+  // }, []) 
+
+  //dependencies array (array kosong) = untuk menghentikan looping (warning)
 
   // state/UseState = data/penyimpanan/memori yang dipake buat menghandle/menangani komponen yang berubah-ubah
   // const [cart, setCart] = useState([
@@ -96,29 +106,32 @@ export default function ProductPage() {
     
     // localStorage.removeItem("token");
     localStorage.clear();
-    setCart([]);
+    // setCart([]);
     
     window.location.href = "/login";
   };
 
-  const handleToCart = (id) => {
-    // setCart([
-    //   ...cart,
-    //   {
-    //     id:id,
-    //     dty:1,
-    //   },
-    // ]);
+  // const handleToCart = (id) => {
 
-    // kalau ada id yang sama maka akan menambahkan qty +1
-    if (cart.find((item) => item.id === id)) {
-      // dy akan mapping dan membongkar itemnya
-      setCart(cart.map((item) => (item.id === id ? { ...item, qty: item.qty + 1 } : item)));
-    } else {
-      // kalo data nya cuma satu maka akan di set satu
-      setCart([...cart, { id, qty: 1 }]);
-    }
-  };
+  //   //<<ini tidak dipakai
+  //   // setCart([
+  //   //   ...cart,
+  //   //   {
+  //   //     id:id,
+  //   //     dty:1,
+  //   //   },
+  //   // ]);
+  //   // >>
+
+  //   // kalau ada id yang sama maka akan menambahkan qty +1
+  //   if (cart.find((item) => item.id === id)) {
+  //     // dy akan mapping dan membongkar itemnya
+  //     setCart(cart.map((item) => (item.id === id ? { ...item, qty: item.qty + 1 } : item)));
+  //   } else {
+  //     // kalo data nya cuma satu maka akan di set satu
+  //     setCart([...cart, { id, qty: 1 }]);
+  //   }
+  // };
 
 
   // get data  using useEffect
@@ -142,7 +155,8 @@ export default function ProductPage() {
             <CardProduct key={data.id}>
               <CardProduct.Header image={data.image} id={data.id} />
               <CardProduct.Body title={data.title}>{data.description}</CardProduct.Body>
-              <CardProduct.Footer price={data.price} id={data.id} handleToCart={handleToCart} />
+              {/* <CardProduct.Footer price={data.price} id={data.id} handleToCart={handleToCart} /> */}
+              <CardProduct.Footer price={data.price} id={data.id} />
             </CardProduct>
 
           ))}

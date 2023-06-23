@@ -1,6 +1,8 @@
 import React from 'react';
 import Button from '../../atoms/Button';
 import { Link } from 'react-router-dom';
+import { addToCart} from '../../../redux/slices/cartSlice';
+import { useDispatch } from 'react-redux';
 
 export default function CardProduct(props) {
     const {children}=props;
@@ -38,6 +40,7 @@ const Body = (props) =>{
 
 const Footer = (props) => {
     const {children,price,handleToCart,id} = props;
+    const dispatch=useDispatch();
     return (
         <>
         <div className='px-5 py-4 text-center'>
@@ -47,7 +50,7 @@ const Footer = (props) => {
                 </p>
             </a>
             <form action="/beli">
-        <Button type="button" size="w-full" color="bg-blue-500" onClick={()=>handleToCart(id)}>Beli</Button>
+        <Button type="button" size="w-full" color="bg-blue-500" onClick={()=>dispatch(addToCart({id,qty:1}))}>Beli</Button>
     </form>
         </div>
         </>

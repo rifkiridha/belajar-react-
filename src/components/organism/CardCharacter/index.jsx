@@ -29,7 +29,7 @@ const Body = (props) =>{
         <div className='px-5 py-2'>
             <a href="#">
                 <h5 className="text-3xl font-bold text-slate-900">{title}</h5>
-                <p className="mt-2 text-slate-600 text-base text-justify">{children}</p>
+                <p className="mt-2 text-slate-600 text-base text-center">{children}</p>
             </a>
         </div>
         </>

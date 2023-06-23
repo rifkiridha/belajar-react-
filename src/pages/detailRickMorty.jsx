@@ -25,7 +25,7 @@ const DetailRickMortyPage = () => {
     console.log(chara);
     return (
             < div className = "flex bg-gray-800 text-white font-semibold px-4 py-4" >
-        <div className='w-full flex flex-wrap justify-center items-center min-h-screen gap-6'>
+        <div className='w-full flex flex-wrap justify-center text-center items-center min-h-screen gap-6'>
             <CardChara key={id}>
                 <CardChara.Header image={image} id="" />
                 <CardChara.Body title={name}>

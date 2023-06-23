@@ -5,6 +5,8 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
+import { Provider } from 'react-redux';
+import store from './redux/store';
 import Navbar from './components/organism/Navbar';
 import AppLogin from './pages/login';
 import AppRegister from './pages/register';
@@ -16,6 +18,7 @@ import DetailProductPage from './pages/detailProduct';
 import CharaPage from './pages/chara';
 import RickMortyPage from './pages/RickMorty';
 import DetailRickMortyPage from './pages/detailRickMorty';
+
 
 
 const router = createBrowserRouter([
@@ -60,8 +63,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <Provider store={store}>
     <Navbar type="header"/>
     <RouterProvider router={router} />
     <Navbar type="footer"/>
+    </Provider>
   </React.StrictMode>,
 )

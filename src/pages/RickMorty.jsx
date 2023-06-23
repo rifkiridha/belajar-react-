@@ -34,7 +34,7 @@ export default function RickMortyPage() {
   return (
     <>
       <div className="flex bg-gray-800 text-white font-semibold px-4 py-4">
-        <div className='w-full flex flex-wrap justify-center items-center min-h-screen gap-6'>
+        <div className='w-full flex flex-wrap justify-center text-center items-center min-h-screen gap-6'>
           {data.length > 0 && data.map((data) => (
             // <CardProduct key={data.id}>
             //   <CardProduct.Header image={data.image} id={data.id} />
